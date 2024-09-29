@@ -1,8 +1,24 @@
-import React, {useState} from 'react';
-import {signOut} from 'firebase/auth';
+import React, {useEffect, useState} from 'react';
 import {auth} from "../firebase/index.js";
+import { signOut, onAuthStateChanged } from 'firebase/auth';
 
-const RoomPage = ({setIsAuth, setRoom, user}) => {
+const RoomPage = ({setIsAuth, setRoom}) => {
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser) {
+                setUser(currentUser); // Kullanıcı oturum açmışsa bilgilerini set et
+            } else {
+                setUser(null); // Oturum yoksa null yap
+            }
+        });
+
+        return () => unsubscribe(); // Bileşen unmount olduğunda dinleyiciyi temizle
+    }, []);
+
+
 
     const logout = () => {
         setIsAuth(false);
@@ -12,7 +28,7 @@ const RoomPage = ({setIsAuth, setRoom, user}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const room = e.target[0].value.toLowerCase();
+        const room = e.target[0].value.toLowerCase().trim();
         setRoom(room);
     }
 
@@ -20,8 +36,11 @@ const RoomPage = ({setIsAuth, setRoom, user}) => {
     return (
 
         <form onSubmit={handleSubmit} className="room-page">
-            <h2>Chat Odasi</h2>
-            <p>Merhaba <br/> <strong>{user?.displayName ? user?.displayName : null}</strong> <br/>Hangi Odaya Giris
+            <div>
+                <img src="../../public/chatLogo.png" alt=""/>
+                <h2>Chat Odasi</h2>
+            </div>
+            <p>Merhaba <br/> <strong>{user && user.displayName}</strong> <br/>Hangi Odaya Giris
                 Yapacaksiniz?</p>
 
             <input type="text" placeholder="or:haftasonu"/>

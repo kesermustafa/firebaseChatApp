@@ -17,7 +17,10 @@ const LoginPage = ({setIsAuth, setUser}) => {
     return (
         <div className="container">
             <div className="login">
-                <h2>Chat Odasi</h2>
+                <div>
+                    <img  src="./chatLogo.png" alt=""/>
+                    <h2>Chat Odasi</h2>
+                </div>
                 <p>Devam etmek icin giris yapiniz</p>
 
                 <button onClick={handleClick}>

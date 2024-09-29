@@ -18,7 +18,7 @@ const App = () => {
             {
                 room
                     ? <ChatPage room={room} setRoom={setRoom}/>
-                    : <RoomPage user={user} setIsAuth={setIsAuth} setRoom={setRoom}/>
+                    : <RoomPage setIsAuth={setIsAuth} setRoom={setRoom}/>
             }
 
         </div>

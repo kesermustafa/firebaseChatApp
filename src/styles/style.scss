@@ -56,6 +56,15 @@ button {
   align-items: center;
   gap: 3rem;
 
+  & div{
+    display: flex;
+    align-items: center;
+
+    img{
+      width: 50px;
+    }
+  }
+
   @media screen and (max-width: 700px) {
     width: 90vw;
   }
@@ -64,7 +73,7 @@ button {
 .room-page {
   background: whitesmoke;
   color: #1a1a1a;
-  padding: 50px 60px;
+  padding: 40px 60px;
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -85,12 +94,16 @@ button {
   button:last-child {
     background: crimson;
   }
+
+  img{
+    width: 70px;
+  }
 }
 
 // CHAT SAYFASI
 .chat-page {
   background: whitesmoke;
-  height: 70vh;
+  height: 95vh;
   width: 70vw;
   max-width: 800px;
   border-radius: 10px;
@@ -99,6 +112,7 @@ button {
   justify-content: space-between;
   overflow: hidden;
 
+  box-shadow: 0 0 5px rgb(255, 255, 255);
   @media screen and (max-width: 650px) {
     width: 100vw;
     height: 100vh;
@@ -110,7 +124,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px 15px;
   }
 
 
@@ -140,6 +154,119 @@ button {
 
 .chat-page main {
   flex: 1;
-  padding: 5px;
+  padding: 10px;
   color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  gap: 1rem;
+  background: url("../../public/back.jpg") center center no-repeat;
+  background-size: cover;
+
+  &::-webkit-scrollbar{
+    background: transparent;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background: #4d4c7d;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track{
+    background: transparent;
+    width: 5px;
+  }
+
+}
+
+
+.msg-user{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 5px;
+  align-self: end;
+  max-width: 80%;
+
+  img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-self: end;
+  }
+  p{
+    background: rgba(246, 194, 90, 0.16);
+    padding: 5px 10px;
+    border-radius: 10px 10px 0 10px;
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+
+}
+
+.msg-other{
+  display: flex;
+  gap: 5px;
+  max-width: 80%;
+
+  img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-self: end;
+  }
+
+ .user-info{
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   background: rgba(188, 210, 246, 0.22);
+   padding: 5px 10px;
+   border: 1px solid rgba(128, 128, 128, 0.25);
+   border-radius: 10px 10px 10px 0;
+   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+
+   p:first-child{
+     font-size: 12px;
+     font-weight: bold;
+     border-bottom: 1px solid rgba(128, 128, 128, 0.31);
+
+   }
+
+   p{
+     flex: 1;
+   }
+ }
+}
+
+.warn{
+  flex: 1;
+  display: grid;
+  place-items: center;
+  color: grey;
+
+}
+
+.chat-page .message-form{
+  position: relative;
+
+
+
+  .emoji button{
+    padding: 6px;
+
+  }
+}
+
+.chat-page .message-form div aside{
+  position: absolute;
+  right: 10px;
+  top:-450px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.63);
+
+  button{
+    padding: 0;
+  }
 }
