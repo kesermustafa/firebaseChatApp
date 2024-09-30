@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import LoginPage from "./pages/LoginPage.jsx";
 import RoomPage from "./pages/RoomPage.jsx";
 import ChatPage from "./pages/ChatPage.jsx";
@@ -10,7 +10,20 @@ const App = () => {
     const [room, setRoom] = useState(null)
     const [user, setUser] = useState(null)
 
-    if (!isAuth) return <LoginPage setUser={setUser} setIsAuth={setIsAuth}/>
+    useEffect(() => {
+        const savedRoom = localStorage.getItem('chatRoom');
+        if (savedRoom) {
+            setRoom(savedRoom); // Eğer oda varsa set edilir
+        } else {
+            setRoom(null); // Oda yoksa yönlendirilir
+        }
+    }, [room]);
+
+
+    if (!isAuth){
+        localStorage.removeItem("chatRoom");
+        return <LoginPage setUser={setUser} setIsAuth={setIsAuth}/>
+    }
 
     return (
         <div className="container">

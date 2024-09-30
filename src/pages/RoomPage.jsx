@@ -6,6 +6,8 @@ const RoomPage = ({setIsAuth, setRoom}) => {
 
     const [user, setUser] = useState(null);
 
+    const [oda, setOda] = useState()
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
@@ -23,12 +25,14 @@ const RoomPage = ({setIsAuth, setRoom}) => {
     const logout = () => {
         setIsAuth(false);
         localStorage.removeItem("token");
+        localStorage.removeItem("chatRoom");
         signOut(auth); // firebase e cikis yapildigini bildir
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const room = e.target[0].value.toLowerCase().trim();
+        localStorage.setItem('chatRoom', room.toString());
         setRoom(room);
     }
 
