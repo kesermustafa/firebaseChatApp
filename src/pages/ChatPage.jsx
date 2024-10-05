@@ -4,12 +4,12 @@ import { addDoc, collection, onSnapshot, serverTimestamp, query, where, orderBy 
 import Messages from "../components/Messages.jsx";
 import EmojiPicker from 'emoji-picker-react';
 
+
 const ChatPage = ({ room, setRoom }) => {
     const [messages, setMessages] = useState([]);
     const [text, setText] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const lastMsg = useRef();
-
 
 
     const handleSubmit = async (e) => {
@@ -73,6 +73,7 @@ const ChatPage = ({ room, setRoom }) => {
                 <p>{auth?.currentUser?.displayName}</p>
                 <p style={{ textTransform: 'capitalize', color: 'orange', fontWeight: 'bold' }}>{room}</p>
                 <button onClick={handleClick}>Farkli Oda</button>
+
             </header>
 
             <main>

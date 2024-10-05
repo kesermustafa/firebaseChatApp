@@ -6,18 +6,19 @@ const RoomPage = ({setIsAuth, setRoom}) => {
 
     const [user, setUser] = useState(null);
 
-    const [oda, setOda] = useState()
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
                 setUser(currentUser); // Kullanıcı oturum açmışsa bilgilerini set et
             } else {
                 setUser(null); // Oturum yoksa null yap
+                localStorage.removeItem('token');
             }
         });
 
-        return () => unsubscribe(); // Bileşen unmount olduğunda dinleyiciyi temizle
+        return () => {
+            unsubscribe()
+        }; // Bileşen unmount olduğunda dinleyiciyi temizle
     }, []);
 
 
