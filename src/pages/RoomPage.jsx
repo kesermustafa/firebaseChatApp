@@ -42,7 +42,7 @@ const RoomPage = ({setIsAuth, setRoom}) => {
 
         <form onSubmit={handleSubmit} className="room-page">
             <div>
-                <img src="../../public/chatLogo.png" alt=""/>
+                <img src="/chatLogo.png" alt=""/>
                 <h2>Chat Odasi</h2>
             </div>
             <p>Merhaba <br/> <strong>{user && user.displayName}</strong> <br/>Hangi Odaya Giris

@@ -24,7 +24,7 @@ const LoginPage = ({setIsAuth, setUser}) => {
                 <p>Devam etmek icin giris yapiniz</p>
 
                 <button onClick={handleClick}>
-                    <img width={30} src="../../public/google.png" alt="google logo"/>
+                    <img width={30} src="/google.png" alt="google logo"/>
                     Google ile Gir
                 </button>
             </div>
